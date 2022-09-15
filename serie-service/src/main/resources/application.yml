@@ -1,4 +1,10 @@
+# App config
+server:
+  port: 8103
+
 spring:
+  application:
+    name: Serie Service
   data:
     mongodb:
       authentication-database: admin
@@ -10,3 +16,24 @@ spring:
 
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka # cambiar a http://eureka-server:8761/eureka cuando se levante Api Gateway
+
+#Actuator: Monitoreando la salud de nuestros microservicios
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
+info:
+  app:
+    name: Serie Service
+    description: El microservicio gestiona las operaciones sobre las series
+    version: 1.0.0
