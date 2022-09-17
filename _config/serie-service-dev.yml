@@ -20,7 +20,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka # cambiar a http://eureka-server:8761/eureka cuando se levante Api Gateway
+      defaultZone: http://eureka-server:8761/eureka
 
 #Actuator: Monitoreando la salud de nuestros microservicios
 management:

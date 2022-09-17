@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config-server
+  profiles:
+    active: dev
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
