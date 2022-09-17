@@ -26,6 +26,6 @@ management:
         include: "*"
 info:
   app:
-    name: Config Server
-    description: Servidor para centralizar la configuración de los demás microservicios
+    name: ${spring.application.name}
+    description: Servidor para centralizar la configuraciï¿½n de los demï¿½s microservicios
     version: 1.0.0

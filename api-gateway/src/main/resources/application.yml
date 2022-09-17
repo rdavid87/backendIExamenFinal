@@ -1,18 +1,22 @@
 # App config
 server:
-  port: 8102
+  port: 8080
 
 spring:
   application:
-    name: Movie Service
-  jpa:
-    hibernate:
-      ddl-auto: update
-  datasource:
-    url: jdbc:mysql://localhost:3306/db_example
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: Api Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: movieRoute
+          uri: lb://movies-service
+          predicates:
+            - Path=/movies/**
+
+        - id: seriesRoute
+          uri: lb://series-service
+          predicates:
+            - Path=/series/**
 
 eureka:
   client:
@@ -32,5 +36,5 @@ management:
 info:
   app:
     name: ${spring.application.name}
-    description: El microservicio gestiona las operaciones sobre las películas
+    description: Enrutamiento, limitación de velocidad, facturación, monitoreo, autenticación, composición de API, políticas, alertas y seguridad.
     version: 1.0.0

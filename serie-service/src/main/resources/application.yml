@@ -34,6 +34,6 @@ management:
         include: "*"
 info:
   app:
-    name: Serie Service
+    name: ${spring.application.name}
     description: El microservicio gestiona las operaciones sobre las series
     version: 1.0.0
