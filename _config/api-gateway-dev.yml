@@ -35,6 +35,6 @@ management:
         include: "*"
 info:
   app:
-    name: ${spring.application.name}
+    name: Api Gateway
     description: Enrutamiento, limitación de velocidad, facturación, monitoreo, autenticación, composición de API, políticas, alertas y seguridad.
     version: 1.0.0
