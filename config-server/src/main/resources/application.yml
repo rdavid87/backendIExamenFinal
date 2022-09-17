@@ -9,8 +9,8 @@ spring:
       server:
         git:
           uri: https://github.com/rdavid87/backendIExamenFinal
-          search-path:
-            - '/_config'
+          default-label: main
+          search-paths: config
   client:
     service-url:
       defaultZone: http://eureka-server:8761/eureka
