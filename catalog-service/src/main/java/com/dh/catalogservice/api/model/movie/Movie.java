@@ -1,35 +1,28 @@
-package com.dh.serieservice.model;
+package com.dh.catalogservice.api.model.movie;
 
-import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-import javax.persistence.*;
-import java.util.List;
 
-@Document(collection = "series")
-public class Serie {
+@Document(collation = "movies")
+public class Movie {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     private String name;
 
     private String genre;
 
-    private List<Season> seasons;
+    private String ulrStream;
 
-    public Serie() {
-        //No-args constructor
+    public Movie() {
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -47,21 +40,21 @@ public class Serie {
         this.genre = genre;
     }
 
-    public List<Season> getSeasons() {
-        return seasons;
+    public String getUlrStream() {
+        return ulrStream;
     }
 
-    public void setSeasons(List<Season> seasons) {
-        this.seasons = seasons;
+    public void setUlrStream(String ulrStream) {
+        this.ulrStream = ulrStream;
     }
 
     @Override
     public String toString() {
-        return "Serie{" +
+        return "Movie{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", genre='" + genre + '\'' +
-                ", seasons=" + seasons +
+                ", ulrStream='" + ulrStream + '\'' +
                 '}';
     }
 }

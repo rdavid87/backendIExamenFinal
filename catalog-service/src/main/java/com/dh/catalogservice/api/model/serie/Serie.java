@@ -1,16 +1,14 @@
-package com.dh.serieservice.model;
+package com.dh.catalogservice.api.model.serie;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Document(collection = "series")
 public class Serie {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     private String name;

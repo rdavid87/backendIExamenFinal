@@ -1,10 +1,6 @@
-package com.dh.serieservice.model;
+package com.dh.catalogservice.api.model.serie;
 
-import org.springframework.data.annotation.ReadOnlyProperty;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
-
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
 
 public class Chapter {
 

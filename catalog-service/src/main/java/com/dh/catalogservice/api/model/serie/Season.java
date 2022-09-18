@@ -1,8 +1,7 @@
-package com.dh.serieservice.model;
+package com.dh.catalogservice.api.model.serie;
 
-import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.*;
 import java.util.List;
 
 public class Season {
