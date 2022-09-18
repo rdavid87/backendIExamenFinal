@@ -9,14 +9,23 @@ spring:
     gateway:
       routes:
         - id: movieRoute
-          uri: lb://movies-service
+          uri: http://localhost:8102/
           predicates:
             - Path=/movies/**
-
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: moviesService
+                fallbackUri: forward:/fallback/movies
         - id: seriesRoute
-          uri: lb://series-service
+          uri: http://localhost:8103/
           predicates:
             - Path=/series/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: seriesService
+                fallbackUri: forward:/fallback/series
 
 eureka:
   client:
