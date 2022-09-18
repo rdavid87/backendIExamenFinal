@@ -8,6 +8,15 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: catalogRoute
+          uri: lb://catalog-service
+          predicates:
+            - Path=/catalogs/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: catalogService
+                fallbackUri: forward:/fallback/catalogs
         - id: movieRoute
           uri: lb://movies-service
           predicates:
