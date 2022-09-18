@@ -4,7 +4,7 @@ server:
 
 spring:
   application:
-    name: serie-service
+    name: series-service
   data:
     mongodb:
       authentication-database: admin
