@@ -1,6 +1,8 @@
 package com.dh.catalogservice.api.model.movie;
 
+import com.dh.catalogservice.model.Catalog;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -46,6 +48,10 @@ public class Movie {
 
     public void setUlrStream(String ulrStream) {
         this.ulrStream = ulrStream;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override

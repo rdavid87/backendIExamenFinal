@@ -1,11 +1,12 @@
 package com.dh.catalogservice.api.model.serie;
 
+import com.dh.catalogservice.model.Catalog;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
-
 @Document(collection = "series")
 public class Serie {
     @Id
