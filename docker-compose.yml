@@ -2,11 +2,13 @@ version: "3.9"
 services:
   rabbitmq:
     image: rabbitmq:3.7.2-management
+    container_name: "rabbitmq"
     ports:
       - "15672:15672"
       - "5672:5672"
   zipkin:
     image: openzipkin/zipkin
+    container_name: "zipkin"
     ports:
       - "9411:9411"
   mongodb:
@@ -23,6 +25,7 @@ services:
       - "27017:27017"
   mysql:
     image: mysql
+    container_name: "mysql"
     ports:
       - 3306:3306
     environment:
@@ -32,35 +35,42 @@ services:
       - MYSQL_ROOT_PASSWORD=root
   redis:
     image: redis
+    container_name: "redis"
     ports:
       - "6379:6379"
   eureka-server:
     image: eureka-server
+    container_name: "eureka-server"
     ports:
       - "8761:8761"
     restart: always
   config-server:
     image: config-server
+    container_name: "config-server"
     ports:
       - "8888:8888"
     restart: always
   api-gateway:
     image: api-gateway
+    container_name: "api-gateway"
     ports:
       - "8080:8080"
     restart: always
   serie-service:
     image: serie-service
+    container_name: "serie-service"
     ports:
       - "8103:8103"
     restart: always
   movie-service:
     image: movie-service
+    container_name: "movie-service"
     ports:
       - "8102:8102"
     restart: always
   catalog-service:
     image: catalog-service
+    container_name: "catalog-service"
     ports:
       - "8104:8104"
     restart: always
