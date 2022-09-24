@@ -12,7 +12,7 @@ spring:
       password: root
       database: db_series
       port: 27017
-      host: localhost
+      host: mongodb
 
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
