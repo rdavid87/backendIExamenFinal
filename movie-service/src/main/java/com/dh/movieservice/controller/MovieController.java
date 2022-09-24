@@ -15,6 +15,8 @@ public class MovieController {
 
     private final MovieService movieService;
 
+    //@Autowired
+    //RabbitMQSender rabbitMQSender;
     @Autowired
     public MovieController(MovieService movieService){
         this.movieService=movieService;
@@ -27,6 +29,7 @@ public class MovieController {
 
     @PostMapping
     public ResponseEntity<Movie> movieSave(@RequestBody Movie movie){
+       //rabbitMQSender.send(movie.toString());
         return ResponseEntity.ok().body(movieService.movieSave(movie));
     }
 

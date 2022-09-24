@@ -5,6 +5,66 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+  eureka-server:
+    image: eureka-server
+    ports:
+      - "8761:8761"
+    restart: always
+  config-server:
+    image: config-server
+    ports:
+      - "8888:8888"
+    restart: always
+  api-gateway:
+    image: api-gateway
+    ports:
+      - "8080:8080"
+    restart: always
+  serie-service:
+    image: serie-service
+    ports:
+      - "8103:8103"
+    restart: always
+  movie-service:
+    image: movie-service
+    ports:
+      - "8102:8102"
+    restart: always
+  catalog-service:
+    image: catalog-service
+    ports:
+      - "8104:8104"
+    restart: always
+  mongodb:
+    image: mongo
+    container_name: "mongodb"
+    command: mongod --auth
+    environment:
+      - MONGO_INITDB_DATABASE=admin
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - ./config/mongo-init.js:/config/mongo-init.js:ro
+    ports:
+      - "27017:27017"
+  mysql:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=db_movies
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+
 volumes:
   data: { }
 networks:

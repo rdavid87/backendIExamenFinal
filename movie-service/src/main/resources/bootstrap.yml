@@ -7,5 +7,25 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
+  rabbitmq:
+    username: guest
+    password: guest
+    #addresses: amqp://ip172-18-0-18-cclqhmdd48eg0080idt0-15672.direct.labs.play-with-docker.com:5672
+    host: localhost
+    port: 5672
+    virtualHost: /
   profiles:
     active: dev
+
+sample:
+  rabbitmq:
+    exchange: sample.exchange
+    queue: sample.queue
+    routingkey: sample.queue
+
+
+
+
+queue:
+  movie:
+    name: Movie

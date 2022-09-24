@@ -24,4 +24,4 @@ cd serie-service/
 sh make.sh
 cd ..
 
-#docker-compose up
+docker-compose up
