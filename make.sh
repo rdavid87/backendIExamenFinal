@@ -5,7 +5,7 @@ cd ..
 
 cd config-server/
 mvn clean && mvn package -DskipTests
-docker build . -t config-service
+docker build . -t config-server
 cd ..
 
 cd api-gateway/
