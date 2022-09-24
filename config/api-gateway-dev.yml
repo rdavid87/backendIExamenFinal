@@ -36,13 +36,6 @@ spring:
                 name: seriesService
                 fallbackUri: forward:/fallback/series
 
-eureka:
-  client:
-    healthcheck:
-      enabled: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
 #Actuator: Monitoreando la salud de nuestros microservicios
 management:
   info:
