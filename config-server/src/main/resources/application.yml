@@ -11,10 +11,10 @@ spring:
           uri: https://github.com/rdavid87/backendIExamenFinal
           default-label: main
           search-paths: config
+eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka
-
+      defaultZone: http://eureka-service:8761/eureka
 
 #Actuator: Monitoreando la salud de nuestros microservicios
 management:

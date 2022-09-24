@@ -17,6 +17,11 @@ spring:
   profiles:
     active: dev
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-service:8761/eureka
+
 sample:
   rabbitmq:
     exchange: sample.exchange
