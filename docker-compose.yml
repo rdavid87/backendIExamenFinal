@@ -23,16 +23,18 @@ services:
       - ./config/mongo-init.js:/config/mongo-init.js:ro
     ports:
       - "27017:27017"
-  mysql:
-    image: mysql
-    container_name: "mysql"
+  mariadb:
+    image: mariadb:10.4
     ports:
       - 3306:3306
+    volumes:
+      - ~/apps/mariadb:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=db_movies
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
       - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=db_movies
+
   redis:
     image: redis
     container_name: "redis"
