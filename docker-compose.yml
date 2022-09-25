@@ -103,7 +103,7 @@ services:
       - serie-service
 volumes:
   mongodb_data_volume:
-    external: true
+    external: false
   data: { }
 networks:
   default:
