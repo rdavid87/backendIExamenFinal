@@ -4,12 +4,12 @@ server:
 
 spring:
   application:
-    name: movies-service
+    name: movie-service
   jpa:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://mariadb:3306/db_movies
+    url: jdbc:mysql://192.168.0.28:3306/db_movies
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
