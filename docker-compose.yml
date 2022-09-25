@@ -37,7 +37,7 @@ services:
       - MYSQL_USER=test
       - MYSQL_DATABASE=db_movies
     volumes:
-      - data/dbMariaDB:/var/lib/mysql
+      - ./data/dbMariaDB:/var/lib/mysql
   redis:
     image: redis
     container_name: "redis"
