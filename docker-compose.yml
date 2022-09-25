@@ -20,7 +20,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
-      - data/dbMongo:/data/db
+      - ./data/dbMongo:/data/db:rw
       - ./config/mongo-init.js:/config/mongo-init.js:ro
     ports:
       - "27017:27017"
