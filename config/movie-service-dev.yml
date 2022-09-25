@@ -9,9 +9,9 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://192.168.0.28:3306/db_movies
-    username: root
-    password: root
+    url: jdbc:mysql://mariadb:3306/db_movies
+    username: test
+    password: mysqlpw
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #Actuator: Monitoreando la salud de nuestros microservicios

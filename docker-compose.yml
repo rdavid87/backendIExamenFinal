@@ -29,9 +29,9 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_PASSWORD=root
-      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=mysqlroot
+      - MYSQL_PASSWORD=mysqlpw
+      - MYSQL_USER=test
       - MYSQL_DATABASE=db_movies
   redis:
     image: redis
