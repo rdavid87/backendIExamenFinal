@@ -20,7 +20,9 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
-      - data/dbMongo:/data/db:rw
+      - type: volume
+        source: mongodb_data_volume
+        target: /data/db
       - ./config/mongo-init.js:/config/mongo-init.js:ro
     ports:
       - "27017:27017"
@@ -53,32 +55,55 @@ services:
     ports:
       - "8888:8888"
     restart: always
+    depends_on:
+      - eureka-server
   api-gateway:
     image: api-gateway
     container_name: "api-gateway"
     ports:
       - "8080:8080"
     restart: always
+    depends_on:
+      - eureka-server
+      - config-server
   serie-service:
     image: serie-service
     container_name: "serie-service"
     ports:
       - "8103:8103"
     restart: always
+    depends_on:
+      - eureka-server
+      - config-server
+      - api-gateway
+      - mongodb
   movie-service:
     image: movie-service
     container_name: "movie-service"
     ports:
       - "8102:8102"
     restart: always
+    depends_on:
+      - eureka-server
+      - config-server
+      - api-gateway
+      - mariadb
   catalog-service:
     image: catalog-service
     container_name: "catalog-service"
     ports:
       - "8104:8104"
     restart: always
-
+    depends_on:
+      - rabbitmq
+      - eureka-server
+      - config-server
+      - api-gateway
+      - movie-service
+      - serie-service
 volumes:
+  mongodb_data_volume:
+    external: true
   data: { }
 networks:
   default:
