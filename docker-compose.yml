@@ -20,6 +20,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
+      - shared_database:/data/dbMongo
       - ./config/mongo-init.js:/config/mongo-init.js:ro
     ports:
       - "27017:27017"
@@ -33,6 +34,8 @@ services:
       - MYSQL_PASSWORD=mysqlpw
       - MYSQL_USER=test
       - MYSQL_DATABASE=db_movies
+    volumes:
+      - data/dbMariaDB:/var/lib/mysql
   redis:
     image: redis
     container_name: "redis"
