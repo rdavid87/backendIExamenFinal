@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "movies-service")
-@LoadBalancerClient(name = "movies-service", configuration = LoadBalancerConfiguration.class)
+@FeignClient(name = "movie-service")
+@LoadBalancerClient(name = "movie-service", configuration = LoadBalancerConfiguration.class)
 public interface MovieFeignClient {
 
     @GetMapping("/movies/{genre}")
