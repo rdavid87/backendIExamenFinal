@@ -39,6 +39,28 @@
 			<artifactId>spring-cloud-starter-config</artifactId>
 			<version>3.1.4</version>
 		</dependency>
+		<!-- permitirá construir un servicio REST no bloqueante de tal forma que podamos hacer varias peticiones simultaneas y las procese en paralelo-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+
+		<!--Dota a la aplicación de correlación de trazas de log entre distintos microservicios mediante cabeceras HTTP -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<!-- se consigue un sistema completo de trazabilidad distribuida para microservicios -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>

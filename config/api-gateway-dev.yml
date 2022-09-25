@@ -7,6 +7,8 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      default-filters:
+        - name: LoggingFilter
       routes:
         - id: catalogRoute
           uri: lb://catalog-service
@@ -24,16 +26,16 @@ spring:
           filters:
             - name: CircuitBreaker
               args:
-                name: moviesService
+                name: movieService
                 fallbackUri: forward:/fallback/movies
         - id: seriesRoute
-          uri: lb://series-service
+          uri: lb://serie-service
           predicates:
             - Path=/series/**
           filters:
             - name: CircuitBreaker
               args:
-                name: seriesService
+                name: serieService
                 fallbackUri: forward:/fallback/series
 
 #Actuator: Monitoreando la salud de nuestros microservicios
