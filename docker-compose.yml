@@ -29,9 +29,9 @@ services:
     ports:
       - "27017:27017"
     restart: always
-  mariadb:
+  mysql:
     image: mariadb:10.4
-    container_name: "mariadb"
+    container_name: "mysql"
     ports:
       - 3306:3306
     environment:
@@ -39,8 +39,6 @@ services:
       - MYSQL_PASSWORD=mysqlpw
       - MYSQL_USER=test
       - MYSQL_DATABASE=db_movies
-    volumes:
-      - ./data/dbMariaDB:/var/lib/mysql
     restart: always
   redis:
     image: redis
