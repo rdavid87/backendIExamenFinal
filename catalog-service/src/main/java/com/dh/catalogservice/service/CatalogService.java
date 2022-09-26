@@ -48,10 +48,14 @@ public class CatalogService {
         this.serieRepository = serieRepository;
     }
 
-    public List<Catalog> findCatalogByGenre(String genre) {
+    public Catalog findCatalogByGenre(String genre) {
         List<Movie> moviesByGenre = findCatalogByGenreMovieApi(genre);
         List<Serie> seriesByGenre = findCatalogByGenreSerieApi(genre);
-        return catalogRepository.findByGenre(genre);
+        Catalog catalog = new Catalog();
+        catalog.setGenre(genre);
+        catalog.setMovies(moviesByGenre);
+        catalog.setSeries(seriesByGenre);
+        return catalog;
     }
 
     //CIRCUIT BREAK se activa en caso de que haya un error en la comunicación con movie-service

@@ -7,9 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "catalogs")
 public class Catalog {
-    @Id
+
     private String genre;
 
     private List<Serie> series;
