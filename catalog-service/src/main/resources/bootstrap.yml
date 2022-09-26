@@ -19,6 +19,8 @@ queue:
     name: Movie
   serie:
     name: Serie
+  catalog:
+    name: CatalogQueue
 eureka:
   client:
     service-url:

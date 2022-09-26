@@ -1,8 +1,8 @@
 package com.dh.catalogservice.controller;
 
 import com.dh.catalogservice.api.model.movie.Movie;
+import com.dh.catalogservice.api.model.serie.Serie;
 import com.dh.catalogservice.api.service.MovieService;
-import com.dh.catalogservice.model.Catalog;
 import com.dh.catalogservice.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,5 +37,11 @@ public class CatalogController {
     public ResponseEntity<String> saveMovieQueue(@RequestBody Movie movie){
         catalogService.saveMovie(movie);
         return ResponseEntity.ok("La movie se envió a la queue");
+    }
+
+    @PostMapping("/series")
+    public ResponseEntity<String> saveSerieQueue(@RequestBody Serie serie){
+        catalogService.saveSerie(serie);
+        return ResponseEntity.ok("La serie se envió a la queue");
     }
 }
