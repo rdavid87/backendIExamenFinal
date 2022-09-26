@@ -6,6 +6,7 @@ import com.dh.catalogservice.api.repository.MovieRepository;
 import com.dh.catalogservice.api.repository.SerieRepository;
 import com.dh.catalogservice.api.service.MovieService;
 import com.dh.catalogservice.api.service.SerieService;
+import com.dh.catalogservice.model.Catalog;
 import com.dh.catalogservice.repository.CatalogRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
@@ -46,13 +47,13 @@ public class CatalogService {
         this.serieRepository = serieRepository;
     }
 
-    public List<Movie> findCatalogByGenre(String genre) {
+    public List<Catalog> findCatalogByGenre(String genre) {
         List<Movie> moviesByGenre = findCatalogByGenreMovieApi(genre);
         movieServiceApi.movieSaveAll(moviesByGenre);
 
         List<Serie> seriesByGenre = findCatalogByGenreSerieApi(genre);
         serieServiceApi.serieSaveAll(seriesByGenre);
-        return moviesByGenre;
+        return catalogRepository.findByGenre(genre);
     }
 
     //CIRCUIT BREAK se activa en caso de que haya un error en la comunicación con movie-service

@@ -12,7 +12,7 @@ services:
     container_name: "zipkin"
     ports:
       - "9411:9411"
-    restart: on-failure
+    restart: always
   mongodb:
     image: mongo
     container_name: "mongodb"
@@ -28,7 +28,7 @@ services:
       - ./config/mongo-init.js:/config/mongo-init.js:ro
     ports:
       - "27017:27017"
-    restart: on-failure
+    restart: always
   mariadb:
     image: mariadb:10.4
     container_name: "mariadb"
@@ -41,7 +41,7 @@ services:
       - MYSQL_DATABASE=db_movies
     volumes:
       - ./data/dbMariaDB:/var/lib/mysql
-    restart: on-failure
+    restart: always
   redis:
     image: redis
     container_name: "redis"
@@ -81,7 +81,6 @@ services:
       - eureka-server
       - config-server
       - api-gateway
-      - mongodb
   movie-service:
     image: movie-service
     container_name: "movie-service"
@@ -92,7 +91,6 @@ services:
       - eureka-server
       - config-server
       - api-gateway
-      - mariadb
   catalog-service:
     image: catalog-service
     container_name: "catalog-service"
@@ -100,12 +98,9 @@ services:
       - "8104:8104"
     restart: always
     depends_on:
-      - rabbitmq
       - eureka-server
       - config-server
       - api-gateway
-      - movie-service
-      - serie-service
 volumes:
   mongodb_data_volume:
     external: false

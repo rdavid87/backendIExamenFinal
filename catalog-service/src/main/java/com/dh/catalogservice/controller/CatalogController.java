@@ -3,6 +3,7 @@ package com.dh.catalogservice.controller;
 import com.dh.catalogservice.api.model.movie.Movie;
 import com.dh.catalogservice.api.model.serie.Serie;
 import com.dh.catalogservice.api.service.MovieService;
+import com.dh.catalogservice.model.Catalog;
 import com.dh.catalogservice.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class CatalogController {
     }
 
     @GetMapping("/{genre}")
-    public ResponseEntity<List<Movie>> getCatalogByGenre(@PathVariable String genre){
+    public ResponseEntity<List<Catalog>> getCatalogByGenre(@PathVariable String genre){
         return ResponseEntity.ok().body(catalogService.findCatalogByGenre(genre));
     }
 
