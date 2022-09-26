@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -49,10 +50,7 @@ public class CatalogService {
 
     public List<Catalog> findCatalogByGenre(String genre) {
         List<Movie> moviesByGenre = findCatalogByGenreMovieApi(genre);
-        movieServiceApi.movieSaveAll(moviesByGenre);
-
         List<Serie> seriesByGenre = findCatalogByGenreSerieApi(genre);
-        serieServiceApi.serieSaveAll(seriesByGenre);
         return catalogRepository.findByGenre(genre);
     }
 
@@ -60,8 +58,15 @@ public class CatalogService {
     //haciendo un llamado a la información local de movie findCatalogByGenreMovie
     @CircuitBreaker(name = "movies", fallbackMethod = "findCatalogByGenreMovie")
     public List<Movie> findCatalogByGenreMovieApi(String genre){
-        List<Movie> moviesByGenre = movieServiceApi.findMovieByGenre(genre).getBody();
-        return moviesByGenre;
+        try {
+            List<Movie> moviesByGenre = movieServiceApi.findMovieByGenre(genre).getBody();
+            movieServiceApi.movieSaveAll(moviesByGenre);
+            return moviesByGenre;
+        }catch (Exception e){
+            return new ArrayList<>();
+        }
+
+
     }
     public List<Movie> findCatalogByGenreMovie(String genre){
         List<Movie> moviesByGenre = movieRepository.findByGenre(genre);
@@ -72,8 +77,14 @@ public class CatalogService {
     //haciendo un llamado a la información local de serie findByCatalogByGenreSerie
     @CircuitBreaker(name = "series", fallbackMethod = "findByCatalogByGenreSerie")
     public List<Serie> findCatalogByGenreSerieApi(String genre){
-        List<Serie> seriesByGenre = serieServiceApi.findSerieByGenre(genre).getBody();
-        return  seriesByGenre;
+        try{
+            List<Serie> seriesByGenre = serieServiceApi.findSerieByGenre(genre).getBody();
+            serieServiceApi.serieSaveAll(seriesByGenre);
+            return  seriesByGenre;
+        }catch (Exception e){
+            return new ArrayList<>();
+        }
+
     }
 
     public List<Serie> findByCatalogByGenreSerie(String genre){
