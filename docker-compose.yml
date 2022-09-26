@@ -6,11 +6,13 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+    restart: on-failure
   zipkin:
     image: openzipkin/zipkin
     container_name: "zipkin"
     ports:
       - "9411:9411"
+    restart: on-failure
   mongodb:
     image: mongo
     container_name: "mongodb"
@@ -26,6 +28,7 @@ services:
       - ./config/mongo-init.js:/config/mongo-init.js:ro
     ports:
       - "27017:27017"
+    restart: on-failure
   mariadb:
     image: mariadb:10.4
     container_name: "mariadb"
@@ -38,11 +41,13 @@ services:
       - MYSQL_DATABASE=db_movies
     volumes:
       - ./data/dbMariaDB:/var/lib/mysql
+    restart: on-failure
   redis:
     image: redis
     container_name: "redis"
     ports:
       - "6379:6379"
+    restart: on-failure
   eureka-server:
     image: eureka-server
     container_name: "eureka-server"

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "series-service")
-@LoadBalancerClient(name = "series-service", configuration = LoadBalancerConfiguration.class)
+@FeignClient(name = "serie-service")
+@LoadBalancerClient(name = "serie-service", configuration = LoadBalancerConfiguration.class)
 public interface SerieFeignClient {
 
     @GetMapping("/series/{genre}")
