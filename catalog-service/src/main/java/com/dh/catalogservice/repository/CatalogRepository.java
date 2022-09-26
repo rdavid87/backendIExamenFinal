@@ -8,4 +8,5 @@ import java.util.List;
 public interface CatalogRepository extends MongoRepository<Catalog, String> {
 
     List<Catalog> findByGenre(String genre);
+
 }

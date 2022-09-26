@@ -1,11 +1,13 @@
 package com.dh.movieservice.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "movies")
-public class Movie {
+public class Movie implements Serializable {
 
+    private static final long serialVersionUID = -6961756666589577603L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

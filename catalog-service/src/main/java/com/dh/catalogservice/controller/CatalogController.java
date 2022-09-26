@@ -6,10 +6,7 @@ import com.dh.catalogservice.model.Catalog;
 import com.dh.catalogservice.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +31,11 @@ public class CatalogController {
     @GetMapping("/{genre}")
     public ResponseEntity<List<Movie>> getCatalogByGenre(@PathVariable String genre){
         return ResponseEntity.ok().body(catalogService.findCatalogByGenre(genre));
+    }
+
+    @PostMapping("/movies")
+    public ResponseEntity<String> saveMovieQueue(@RequestBody Movie movie){
+        catalogService.saveMovie(movie);
+        return ResponseEntity.ok("La movie se envió a la queue");
     }
 }

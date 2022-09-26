@@ -30,8 +30,12 @@ public class MovieService {
     }
 
     @RabbitListener(queues = "${queue.movie.name}")
-    public Movie movieSave(Movie movie){
+    public void movieSaveQueue(Movie movie){
         LOG.info("Se recibio una movie a través de rabbit " + movie.toString());
+        movieSave(movie);
+    }
+
+    public Movie movieSave(Movie movie){
         return movieRepository.save(movie);
     }
 }

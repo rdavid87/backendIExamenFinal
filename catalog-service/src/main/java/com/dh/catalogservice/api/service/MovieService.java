@@ -25,11 +25,12 @@ public class MovieService {
     }
 
     public ResponseEntity<List<Movie>> findMovieByGenre(String genre) {
-        LOG.info("Se va a incluir el llamado al movie-service...");
+        LOG.info("Se va a incluir el llamado al movie-service by genre...");
         return movieFeignClient.getMovieByGenre(genre);
     }
 
     public void movieSaveAll(List<Movie> movieList){
+        LOG.info("Se va a incluir el llamado al movie-service All..");
         movieRepository.saveAll(movieList);
     }
 
