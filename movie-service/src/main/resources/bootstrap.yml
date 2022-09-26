@@ -22,15 +22,6 @@ eureka:
     service-url:
       defaultZone: http://eureka-server:8761/eureka
 
-sample:
-  rabbitmq:
-    exchange: sample.exchange
-    queue: sample.queue
-    routingkey: sample.queue
-
-
-
-
 queue:
   movie:
     name: Movie
