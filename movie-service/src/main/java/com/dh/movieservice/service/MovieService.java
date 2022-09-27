@@ -29,6 +29,8 @@ public class MovieService {
         return movieRepository.findByGenre(genre);
     }
 
+    //esta en escucha de una petición que viene del servidor de RabbitMQ,
+    //guarda la moovie
     @RabbitListener(queues = "${queue.movie.name}")
     public void movieSaveQueue(Movie movie){
         LOG.info("Se recibio una movie a través de rabbit " + movie.toString());
